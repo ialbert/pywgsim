@@ -14,7 +14,7 @@ pywgsim_ext = Extension(
 )
 
 setup(
-    name="bio",
+    name="pywgsim",
     version=pywgsim.VERSION,
     author="Istvan Albert",
     author_email="istvan.albert@gmail.com",
