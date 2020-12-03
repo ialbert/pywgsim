@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from setuptools.extension import  Extension
+from setuptools.extension import Extension
 from Cython.Build import cythonize
 import pywgsim
 
@@ -8,7 +8,8 @@ with open("README.md", "r") as fh:
 
 pywgsim_ext = Extension(
     name="pywgsim.wgsim",
-    sources=["pywgsim/lib/wgsim_mod.c", "pywgsim/wgsim.pyx"],
+    sources=[ "pywgsim/wgsim.pyx", "pywgsim/lib/wgsim_mod.c"],
+    depends=["pywgsim/lib/wgsim_mod.h", "pywgsim/lib/kseq.h"],
     libraries=["z", "m"],
     include_dirs=["pywgsim/lib"]
 )
@@ -26,8 +27,9 @@ setup(
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: POSIX :: Linux",
-        "Operating System :: MacOS",
+        'Operating System :: POSIX',
+        'Programming Language :: C',
+        'Programming Language :: Cython',
     ],
     install_requires=[
         'cython',
@@ -40,10 +42,10 @@ setup(
         ],
     },
 
+    package_data={"pywgsim": ["*.pyx", "lib/*.h", "lib/*.c"]},
 
     python_requires='>=3.6',
 
     ext_modules=cythonize([pywgsim_ext])
 
 )
-
