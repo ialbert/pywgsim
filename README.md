@@ -1,8 +1,10 @@
 ## pywsgim
 
-pywgsim is a modified version of the wgsim short read simulator. It has been modified to allow visualizing the simulated mutations as a GFF file.
+pywgsim is a modified version of the wgsim short read simulator. 
 
 * https://github.com/lh3/wgsim
+
+The code for `wgsim` has been modified to allow visualizing the simulated mutations as a GFF file.
 
 The package provides both a python wrapper and standalone compiled executables for Linux and MacOS.
  
