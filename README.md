@@ -1,6 +1,6 @@
 ## pywsgim
 
-pywgsim is a python wrapper around the wgsim short read simulator
+pywgsim is a python wrapper around the wgsim short read simulator. 
 
 * https://github.com/lh3/wgsim
 
@@ -8,23 +8,10 @@ pywgsim is a python wrapper around the wgsim short read simulator
 
     pywgsim -h
 
-or
-
-    python -m pywgsim
-    
 ## Installation
 
     pip install pywgsim
-    
-## API
-
-The interface to `wgsim` can be made in a single function call 
-
-    from pywgsim import wgsim
-
-    wgsim.core(r1="r1.fq", r2="r2.fq", ref="genome.fa", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05, is_hap=0, N=100000,  dist=500, stdev=50, size_l=100, size_r=100, is_fixed=0, seed=0)
-
-                
+                 
 ## Changes
 
 The original code for wgsim has been expanded a little bit. The main changes are:
@@ -66,5 +53,38 @@ Where:
    * `4:0:0` are the number of errors, substitutions and indels in the right-most read of the pair.
    * `4` is the read pair number, unique, per contig.
 
-[wgsim]: https://github.com/lh3/wgsim
+## Help
 
+    $ pywgsim -h
+    
+prints:
+
+    usage: pywgsim [-h] [-a 1.fq] [-b 2.fq] [-N 1000] [-f] [-e 0.02] [-r 0.001]
+                   [-R 0.15] [-X 0.25] [-D 500] [-s 50] [-S 0]
+                   genome
+    
+    positional arguments:
+      genome                the FASTA reference sequence
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      -a 1.fq, --r1 1.fq    name for first in pair
+      -b 2.fq, --r2 2.fq    name for second in pair
+      -N 1000, --num 1000   number of read pairs
+      -f, --fixed           each chromosome gets N sequences
+      -e 0.02, --err 0.02   the base error rate
+      -r 0.001, --mut 0.001
+                            rate of mutations
+      -R 0.15, --frac 0.15  fraction of indels
+      -X 0.25, --ext 0.25   probability an indel is extended
+      -D 500, --dist 500    outer distance between the two ends
+      -s 50, --stdev 50     standard deviation
+      -S 0, --seed 0        seed for the random generator
+      
+## API
+
+The interface to `wgsim` can be made in a single function call 
+
+    from pywgsim import wgsim
+
+    wgsim.core(r1="r1.fq", r2="r2.fq", ref="genome.fa", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05, is_hap=0, N=100000,  dist=500, stdev=50, size_l=100, size_r=100, is_fixed=0, seed=0)
