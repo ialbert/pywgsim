@@ -11,14 +11,21 @@ pywgsim is a python wrapper around the wgsim short read simulator.
 ## Installation
 
     pip install pywgsim
-                 
+    
+There code also works as a standalone, C compiled executable.
+
+Clone the repository and run `make` to get a compiled version of `pywgsim` in the `scripts` directory. The short versions
+of the flags are identical to `wgsim`.
+
 ## Changes
 
-The original code for wgsim has been expanded a little bit. The main changes are:
+The original code for wgsim has been altered as follows:
 
-1. The information on the mutations introduced by `wgsim` are now generated in GFF format.
+1. The output for the mutations introduced by `wgsim` are now generated in GFF format.
+1. The separator character in the read name has been changed from `_` to `|`. 
 1. There is a new flag called `--fixed` that generates the same `N` number of reads for each chromosome.
-1. The separator character in the read name has been changed from `_` to `|`. This follows a more widely accepted standard (i.e. NCBI) and allows identifying the contig name from the read name. 
+
+The read naming now follows a more widely accepted standard (i.e. NCBI) and allows for easier identifying the contig name from the read name. 
 
 In the default operation of wgsim the `N` reads are distribute such to create a uniform coverage across all chromosomes (longer chromosomes get a larger fraction of N)
  
@@ -58,32 +65,36 @@ Where:
     $ pywgsim -h
     
 prints:
-
-    usage: pywgsim [-h] [-a 1.fq] [-b 2.fq] [-N 1000] [-f] [-e 0.02] [-r 0.001]
-                   [-R 0.15] [-X 0.25] [-D 500] [-s 50] [-S 0]
-                   genome
+    
+    usage: pywgsim [-h] [-e 0.02] [-D 500] [-s 50] [-N 1000] [-1 70] [-2 70]
+                   [-r 0.001] [-R 0.15] [-X 0.25] [-S 0] [-A 0.05] [-f]
+                   genome [read1] [read2]
     
     positional arguments:
-      genome                the FASTA reference sequence
+      genome                FASTA reference sequence
+      read1                 FASTQ file for first in pair
+      read2                 FASTQ file for second in pair
     
     optional arguments:
       -h, --help            show this help message and exit
-      -a 1.fq, --r1 1.fq    name for first in pair
-      -b 2.fq, --r2 2.fq    name for second in pair
-      -N 1000, --num 1000   number of read pairs
-      -f, --fixed           each chromosome gets N sequences
       -e 0.02, --err 0.02   the base error rate
+      -D 500, --dist 500    outer distance between the two ends
+      -s 50, --stdev 50     standard deviation
+      -N 1000, --num 1000   number of read pairs
+      -1 70, --L1 70        length of the first read
+      -2 70, --L2 70        length of the second read
       -r 0.001, --mut 0.001
                             rate of mutations
       -R 0.15, --frac 0.15  fraction of indels
       -X 0.25, --ext 0.25   probability an indel is extended
-      -D 500, --dist 500    outer distance between the two ends
-      -s 50, --stdev 50     standard deviation
       -S 0, --seed 0        seed for the random generator
-      
+      -A 0.05, --amb 0.05   disregard if the fraction of ambiguous bases higher
+                            than FLOAT
+      -f, --fixed           each chromosome gets N sequences
+          
 ## API
 
-The interface to `wgsim` can be made in a single function call 
+The C interface to `wgsim` is accessible as a single function call 
 
     from pywgsim import wgsim
 

@@ -10,3 +10,4 @@ def core(r1, r2, ref, err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=
     ref = ref.encode()
 
     wgsim_wrap(r1, r2, ref, err_rate, mut_rate, indel_frac, indel_ext, max_n, is_hap, N,  dist, stdev, size_l, size_r, is_fixed, seed)
+

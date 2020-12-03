@@ -1534,6 +1534,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_core(CYTHON_UNUSED PyObject *__pyx_sel
  *     ref = ref.encode()
  * 
  *     wgsim_wrap(r1, r2, ref, err_rate, mut_rate, indel_frac, indel_ext, max_n, is_hap, N,  dist, stdev, size_l, size_r, is_fixed, seed)             # <<<<<<<<<<<<<<
+ * 
  */
   __pyx_t_4 = __Pyx_PyObject_AsString(__pyx_v_r1); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) __PYX_ERR(0, 12, __pyx_L1_error)
   __pyx_t_5 = __Pyx_PyObject_AsString(__pyx_v_r2); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) __PYX_ERR(0, 12, __pyx_L1_error)

@@ -40,7 +40,7 @@
 #include "kseq.h"
 KSEQ_INIT(gzFile, gzread)
 
-#define PACKAGE_VERSION "0.3.1-r13"
+#define PACKAGE_VERSION "0.3.1.mod1"
 
 const uint8_t nst_nt4_table[256] = {
 	4, 4, 4, 4,  4, 4, 4, 4,  4, 4, 4, 4,  4, 4, 4, 4, 
@@ -429,10 +429,11 @@ void wgsim_core(FILE *fpout1, FILE *fpout2, const char *fn, int is_hap, uint64_t
 static int simu_usage()
 {
 	fprintf(stderr, "\n");
-	fprintf(stderr, "Program: wgsim (short read simulator)\n");
-	fprintf(stderr, "Version: %s\n", PACKAGE_VERSION);
-	fprintf(stderr, "Contact: Heng Li <lh3@sanger.ac.uk>\n\n");
-	fprintf(stderr, "Usage:   wgsim [options] <in.ref.fa> <out.read1.fq> <out.read2.fq>\n\n");
+	fprintf(stderr, "Program: pywgsim (short read simulator)\n");
+	fprintf(stderr, "Version: %s\n\n", PACKAGE_VERSION);
+	fprintf(stderr, "Original: https://github.com/lh3/wgsim\n");
+	fprintf(stderr, "Modified: https://github.com/ialbert/pywgsim\n\n");
+	fprintf(stderr, "Usage:   pywgsim [options] <in.ref.fa> <out.read1.fq> <out.read2.fq>\n\n");
 	fprintf(stderr, "Options: -e FLOAT      base error rate [%.3f]\n", ERR_RATE);
 	fprintf(stderr, "         -d INT        outer distance between the two ends [500]\n");
 	fprintf(stderr, "         -s INT        standard deviation [50]\n");

@@ -42,7 +42,7 @@ setup(
         ],
     },
 
-    package_data={"pywgsim": ["*.pyx", "lib/*.h", "lib/*.c"]},
+    include_package_data = True,
 
     python_requires='>=3.6',
 
