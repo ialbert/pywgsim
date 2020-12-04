@@ -6,6 +6,8 @@ pywgsim is a modified version of the wgsim short read simulator.
 
 The code for `wgsim` has been modified to allow visualizing the simulated mutations as a GFF file.
 
+![IGV Screenshot](test/igv-example.png)
+
 The package provides both a python wrapper and standalone compiled executables for Linux and MacOS.
  
 ## Usage
