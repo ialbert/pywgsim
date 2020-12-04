@@ -1,4 +1,4 @@
-## pywsgim
+## pywgsim
 
 pywgsim is a modified version of the wgsim short read simulator. 
 
