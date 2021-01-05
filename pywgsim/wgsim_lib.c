@@ -4,11 +4,11 @@
 {
     "distutils": {
         "depends": [
-            "pywgsim/lib/kseq.h",
-            "pywgsim/lib/wgsim_mod.h"
+            "pywgsim/src/kseq.h",
+            "pywgsim/src/wgsim_mod.h"
         ],
         "include_dirs": [
-            "pywgsim/lib"
+            "pywgsim/src"
         ],
         "libraries": [
             "z",
@@ -16,8 +16,8 @@
         ],
         "name": "pywgsim.wgsim",
         "sources": [
-            "pywgsim/wgsim.pyx",
-            "pywgsim/lib/wgsim_mod.c"
+            "pywgsim/wgsim_lib.pyx",
+            "pywgsim/src/wgsim_mod.c"
         ]
     },
     "module_name": "pywgsim.wgsim"
@@ -838,7 +838,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "pywgsim/wgsim.pyx",
+  "pywgsim/wgsim_lib.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -1211,10 +1211,10 @@ static const char __pyx_k_read2_fq[] = "read2.fq";
 static const char __pyx_k_indel_ext[] = "indel_ext";
 static const char __pyx_k_indel_frac[] = "indel_frac";
 static const char __pyx_k_pywgsim_wgsim[] = "pywgsim.wgsim";
-static const char __pyx_k_pywgsim_wgsim_pyx[] = "pywgsim/wgsim.pyx";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_genome_not_found_s[] = "genome not found: %s";
 static const char __pyx_k_invalid_fraction_s[] = "invalid fraction %s";
+static const char __pyx_k_pywgsim_wgsim_lib_pyx[] = "pywgsim/wgsim_lib.pyx";
 static PyObject *__pyx_n_s_N;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_close;
@@ -1246,7 +1246,7 @@ static PyObject *__pyx_n_s_open;
 static PyObject *__pyx_n_s_os;
 static PyObject *__pyx_n_s_path;
 static PyObject *__pyx_n_s_pywgsim_wgsim;
-static PyObject *__pyx_kp_s_pywgsim_wgsim_pyx;
+static PyObject *__pyx_kp_s_pywgsim_wgsim_lib_pyx;
 static PyObject *__pyx_n_s_r1;
 static PyObject *__pyx_n_s_r2;
 static PyObject *__pyx_kp_s_read1_fq;
@@ -1285,7 +1285,7 @@ static PyObject *__pyx_codeobj__4;
 static PyObject *__pyx_codeobj__6;
 /* Late includes */
 
-/* "pywgsim/wgsim.pyx":8
+/* "pywgsim/wgsim_lib.pyx":9
  *                    int is_fixed, int seed)
  * 
  * def fraction(value):             # <<<<<<<<<<<<<<
@@ -1319,47 +1319,47 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_fraction(CYTHON_UNUSED PyObject *__pyx
   __Pyx_RefNannySetupContext("fraction", 0);
   __Pyx_INCREF(__pyx_v_value);
 
-  /* "pywgsim/wgsim.pyx":9
+  /* "pywgsim/wgsim_lib.pyx":10
  * 
  * def fraction(value):
  *     value = float(value)             # <<<<<<<<<<<<<<
  *     if value > 1:
  *         raise Exception("invalid fraction %s" % value)
  */
-  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF_SET(__pyx_v_value, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pywgsim/wgsim.pyx":10
+  /* "pywgsim/wgsim_lib.pyx":11
  * def fraction(value):
  *     value = float(value)
  *     if value > 1:             # <<<<<<<<<<<<<<
  *         raise Exception("invalid fraction %s" % value)
  *     return value
  */
-  __pyx_t_1 = PyObject_RichCompare(__pyx_v_value, __pyx_int_1, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_t_1 = PyObject_RichCompare(__pyx_v_value, __pyx_int_1, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (unlikely(__pyx_t_2)) {
 
-    /* "pywgsim/wgsim.pyx":11
+    /* "pywgsim/wgsim_lib.pyx":12
  *     value = float(value)
  *     if value > 1:
  *         raise Exception("invalid fraction %s" % value)             # <<<<<<<<<<<<<<
  *     return value
  * 
  */
-    __pyx_t_1 = __Pyx_PyString_FormatSafe(__pyx_kp_s_invalid_fraction_s, __pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyString_FormatSafe(__pyx_kp_s_invalid_fraction_s, __pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])), __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 11, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])), __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 11, __pyx_L1_error)
+    __PYX_ERR(0, 12, __pyx_L1_error)
 
-    /* "pywgsim/wgsim.pyx":10
+    /* "pywgsim/wgsim_lib.pyx":11
  * def fraction(value):
  *     value = float(value)
  *     if value > 1:             # <<<<<<<<<<<<<<
@@ -1368,7 +1368,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_fraction(CYTHON_UNUSED PyObject *__pyx
  */
   }
 
-  /* "pywgsim/wgsim.pyx":12
+  /* "pywgsim/wgsim_lib.pyx":13
  *     if value > 1:
  *         raise Exception("invalid fraction %s" % value)
  *     return value             # <<<<<<<<<<<<<<
@@ -1380,7 +1380,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_fraction(CYTHON_UNUSED PyObject *__pyx
   __pyx_r = __pyx_v_value;
   goto __pyx_L0;
 
-  /* "pywgsim/wgsim.pyx":8
+  /* "pywgsim/wgsim_lib.pyx":9
  *                    int is_fixed, int seed)
  * 
  * def fraction(value):             # <<<<<<<<<<<<<<
@@ -1401,7 +1401,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_fraction(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "pywgsim/wgsim.pyx":14
+/* "pywgsim/wgsim_lib.pyx":15
  *     return value
  * 
  * def error(msg):             # <<<<<<<<<<<<<<
@@ -1435,22 +1435,22 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_2error(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("error", 0);
 
-  /* "pywgsim/wgsim.pyx":15
+  /* "pywgsim/wgsim_lib.pyx":16
  * 
  * def error(msg):
  *     sys.stderr.write("*** %s\n" % msg)             # <<<<<<<<<<<<<<
  *     sys.stderr.write("*** exiting\n")
  *     sys.exit(1)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_stderr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_stderr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_write); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_write); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyString_FormatSafe(__pyx_kp_s_s, __pyx_v_msg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyString_FormatSafe(__pyx_kp_s_s, __pyx_v_msg); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -1465,24 +1465,24 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_2error(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_4, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pywgsim/wgsim.pyx":16
+  /* "pywgsim/wgsim_lib.pyx":17
  * def error(msg):
  *     sys.stderr.write("*** %s\n" % msg)
  *     sys.stderr.write("*** exiting\n")             # <<<<<<<<<<<<<<
  *     sys.exit(1)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_stderr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_stderr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_write); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_write); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
@@ -1497,21 +1497,21 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_2error(CYTHON_UNUSED PyObject *__pyx_s
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_kp_s_exiting) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_kp_s_exiting);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pywgsim/wgsim.pyx":17
+  /* "pywgsim/wgsim_lib.pyx":18
  *     sys.stderr.write("*** %s\n" % msg)
  *     sys.stderr.write("*** exiting\n")
  *     sys.exit(1)             # <<<<<<<<<<<<<<
  * 
  * def core(ref, r1="read1.fq", r2="read2.fq", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05,
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_sys); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -1526,12 +1526,12 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_2error(CYTHON_UNUSED PyObject *__pyx_s
   }
   __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_int_1) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_int_1);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pywgsim/wgsim.pyx":14
+  /* "pywgsim/wgsim_lib.pyx":15
  *     return value
  * 
  * def error(msg):             # <<<<<<<<<<<<<<
@@ -1555,7 +1555,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_2error(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "pywgsim/wgsim.pyx":19
+/* "pywgsim/wgsim_lib.pyx":20
  *     sys.exit(1)
  * 
  * def core(ref, r1="read1.fq", r2="read2.fq", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05,             # <<<<<<<<<<<<<<
@@ -1743,7 +1743,7 @@ static PyObject *__pyx_pw_7pywgsim_5wgsim_5core(PyObject *__pyx_self, PyObject *
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "core") < 0)) __PYX_ERR(0, 19, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "core") < 0)) __PYX_ERR(0, 20, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -1801,7 +1801,7 @@ static PyObject *__pyx_pw_7pywgsim_5wgsim_5core(PyObject *__pyx_self, PyObject *
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("core", 0, 1, 16, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 19, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("core", 0, 1, 16, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 20, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pywgsim.wgsim.core", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -1862,7 +1862,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
   __Pyx_INCREF(__pyx_v_indel_ext);
   __Pyx_INCREF(__pyx_v_max_n);
 
-  /* "pywgsim/wgsim.pyx":23
+  /* "pywgsim/wgsim_lib.pyx":24
  * 
  *     # Validating input parameters
  *     try:             # <<<<<<<<<<<<<<
@@ -1878,19 +1878,19 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "pywgsim/wgsim.pyx":24
+      /* "pywgsim/wgsim_lib.pyx":25
  *     # Validating input parameters
  *     try:
  *         if not os.path.isfile(ref):             # <<<<<<<<<<<<<<
  *             error("genome not found: %s" % ref)
  * 
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_os); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L3_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_os); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_path); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L3_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_path); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_isfile); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L3_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_isfile); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __pyx_t_6 = NULL;
@@ -1905,24 +1905,24 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
       }
       __pyx_t_4 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_v_ref) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_ref);
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L3_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 24, __pyx_L3_error)
+      __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 25, __pyx_L3_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_8 = ((!__pyx_t_7) != 0);
       if (__pyx_t_8) {
 
-        /* "pywgsim/wgsim.pyx":25
+        /* "pywgsim/wgsim_lib.pyx":26
  *     try:
  *         if not os.path.isfile(ref):
  *             error("genome not found: %s" % ref)             # <<<<<<<<<<<<<<
  * 
  *         # Verify that read names are writeable files.
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_error); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L3_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_error); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 26, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = __Pyx_PyString_FormatSafe(__pyx_kp_s_genome_not_found_s, __pyx_v_ref); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L3_error)
+        __pyx_t_6 = __Pyx_PyString_FormatSafe(__pyx_kp_s_genome_not_found_s, __pyx_v_ref); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 26, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_9 = NULL;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -1937,12 +1937,12 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
         __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_9, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6);
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 25, __pyx_L3_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 26, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-        /* "pywgsim/wgsim.pyx":24
+        /* "pywgsim/wgsim_lib.pyx":25
  *     # Validating input parameters
  *     try:
  *         if not os.path.isfile(ref):             # <<<<<<<<<<<<<<
@@ -1951,14 +1951,14 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
  */
       }
 
-      /* "pywgsim/wgsim.pyx":28
+      /* "pywgsim/wgsim_lib.pyx":29
  * 
  *         # Verify that read names are writeable files.
  *         for name in [r1, r2]:             # <<<<<<<<<<<<<<
  *             fp = open(name, 'wt')
  *             fp.close()
  */
-      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L3_error)
+      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_v_r1);
       __Pyx_GIVEREF(__pyx_v_r1);
@@ -1971,22 +1971,22 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
       for (;;) {
         if (__pyx_t_10 >= 2) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_10); __Pyx_INCREF(__pyx_t_4); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 28, __pyx_L3_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_10); __Pyx_INCREF(__pyx_t_4); __pyx_t_10++; if (unlikely(0 < 0)) __PYX_ERR(0, 29, __pyx_L3_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L3_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_10); __pyx_t_10++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_name, __pyx_t_4);
         __pyx_t_4 = 0;
 
-        /* "pywgsim/wgsim.pyx":29
+        /* "pywgsim/wgsim_lib.pyx":30
  *         # Verify that read names are writeable files.
  *         for name in [r1, r2]:
  *             fp = open(name, 'wt')             # <<<<<<<<<<<<<<
  *             fp.close()
  * 
  */
-        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L3_error)
+        __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_INCREF(__pyx_v_name);
         __Pyx_GIVEREF(__pyx_v_name);
@@ -1994,20 +1994,20 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
         __Pyx_INCREF(__pyx_n_s_wt);
         __Pyx_GIVEREF(__pyx_n_s_wt);
         PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_n_s_wt);
-        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_4, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 29, __pyx_L3_error)
+        __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_4, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 30, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_XDECREF_SET(__pyx_v_fp, __pyx_t_6);
         __pyx_t_6 = 0;
 
-        /* "pywgsim/wgsim.pyx":30
+        /* "pywgsim/wgsim_lib.pyx":31
  *         for name in [r1, r2]:
  *             fp = open(name, 'wt')
  *             fp.close()             # <<<<<<<<<<<<<<
  * 
  *         err_rate = fraction(err_rate)
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_close); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 30, __pyx_L3_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_fp, __pyx_n_s_close); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 31, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_9 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2021,12 +2021,12 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
         }
         __pyx_t_6 = (__pyx_t_9) ? __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_9) : __Pyx_PyObject_CallNoArg(__pyx_t_4);
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 30, __pyx_L3_error)
+        if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 31, __pyx_L3_error)
         __Pyx_GOTREF(__pyx_t_6);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-        /* "pywgsim/wgsim.pyx":28
+        /* "pywgsim/wgsim_lib.pyx":29
  * 
  *         # Verify that read names are writeable files.
  *         for name in [r1, r2]:             # <<<<<<<<<<<<<<
@@ -2036,39 +2036,12 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "pywgsim/wgsim.pyx":32
+      /* "pywgsim/wgsim_lib.pyx":33
  *             fp.close()
  * 
  *         err_rate = fraction(err_rate)             # <<<<<<<<<<<<<<
  *         mut_rate = fraction(mut_rate)
  *         indel_frac = fraction(indel_frac)
- */
-      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_fraction); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 32, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __pyx_t_4 = NULL;
-      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
-        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_6);
-        if (likely(__pyx_t_4)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-          __Pyx_INCREF(__pyx_t_4);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_6, function);
-        }
-      }
-      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_err_rate) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_err_rate);
-      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 32, __pyx_L3_error)
-      __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF_SET(__pyx_v_err_rate, __pyx_t_5);
-      __pyx_t_5 = 0;
-
-      /* "pywgsim/wgsim.pyx":33
- * 
- *         err_rate = fraction(err_rate)
- *         mut_rate = fraction(mut_rate)             # <<<<<<<<<<<<<<
- *         indel_frac = fraction(indel_frac)
- *         indel_ext = fraction(indel_ext)
  */
       __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_fraction); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 33, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
@@ -2082,20 +2055,20 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
           __Pyx_DECREF_SET(__pyx_t_6, function);
         }
       }
-      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_mut_rate) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_mut_rate);
+      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_err_rate) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_err_rate);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF_SET(__pyx_v_mut_rate, __pyx_t_5);
+      __Pyx_DECREF_SET(__pyx_v_err_rate, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pywgsim/wgsim.pyx":34
+      /* "pywgsim/wgsim_lib.pyx":34
+ * 
  *         err_rate = fraction(err_rate)
- *         mut_rate = fraction(mut_rate)
- *         indel_frac = fraction(indel_frac)             # <<<<<<<<<<<<<<
+ *         mut_rate = fraction(mut_rate)             # <<<<<<<<<<<<<<
+ *         indel_frac = fraction(indel_frac)
  *         indel_ext = fraction(indel_ext)
- *         max_n = fraction(max_n)
  */
       __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_fraction); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 34, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
@@ -2109,20 +2082,20 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
           __Pyx_DECREF_SET(__pyx_t_6, function);
         }
       }
-      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_indel_frac) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_indel_frac);
+      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_mut_rate) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_mut_rate);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 34, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF_SET(__pyx_v_indel_frac, __pyx_t_5);
+      __Pyx_DECREF_SET(__pyx_v_mut_rate, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pywgsim/wgsim.pyx":35
+      /* "pywgsim/wgsim_lib.pyx":35
+ *         err_rate = fraction(err_rate)
  *         mut_rate = fraction(mut_rate)
- *         indel_frac = fraction(indel_frac)
- *         indel_ext = fraction(indel_ext)             # <<<<<<<<<<<<<<
+ *         indel_frac = fraction(indel_frac)             # <<<<<<<<<<<<<<
+ *         indel_ext = fraction(indel_ext)
  *         max_n = fraction(max_n)
- * 
  */
       __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_fraction); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 35, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
@@ -2136,20 +2109,20 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
           __Pyx_DECREF_SET(__pyx_t_6, function);
         }
       }
-      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_indel_ext) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_indel_ext);
+      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_indel_frac) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_indel_frac);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 35, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __Pyx_DECREF_SET(__pyx_v_indel_ext, __pyx_t_5);
+      __Pyx_DECREF_SET(__pyx_v_indel_frac, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pywgsim/wgsim.pyx":36
+      /* "pywgsim/wgsim_lib.pyx":36
+ *         mut_rate = fraction(mut_rate)
  *         indel_frac = fraction(indel_frac)
- *         indel_ext = fraction(indel_ext)
- *         max_n = fraction(max_n)             # <<<<<<<<<<<<<<
+ *         indel_ext = fraction(indel_ext)             # <<<<<<<<<<<<<<
+ *         max_n = fraction(max_n)
  * 
- *     except Exception as exc:
  */
       __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_fraction); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 36, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_6);
@@ -2163,15 +2136,42 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
           __Pyx_DECREF_SET(__pyx_t_6, function);
         }
       }
-      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_max_n) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_max_n);
+      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_indel_ext) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_indel_ext);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L3_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __Pyx_DECREF_SET(__pyx_v_indel_ext, __pyx_t_5);
+      __pyx_t_5 = 0;
+
+      /* "pywgsim/wgsim_lib.pyx":37
+ *         indel_frac = fraction(indel_frac)
+ *         indel_ext = fraction(indel_ext)
+ *         max_n = fraction(max_n)             # <<<<<<<<<<<<<<
+ * 
+ *     except Exception as exc:
+ */
+      __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_fraction); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 37, __pyx_L3_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_4 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_6);
+        if (likely(__pyx_t_4)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_6, function);
+        }
+      }
+      __pyx_t_5 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_4, __pyx_v_max_n) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_max_n);
+      __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 37, __pyx_L3_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       __Pyx_DECREF_SET(__pyx_v_max_n, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pywgsim/wgsim.pyx":23
+      /* "pywgsim/wgsim_lib.pyx":24
  * 
  *     # Validating input parameters
  *     try:             # <<<<<<<<<<<<<<
@@ -2189,7 +2189,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "pywgsim/wgsim.pyx":38
+    /* "pywgsim/wgsim_lib.pyx":39
  *         max_n = fraction(max_n)
  * 
  *     except Exception as exc:             # <<<<<<<<<<<<<<
@@ -2199,23 +2199,23 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
     __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_11) {
       __Pyx_AddTraceback("pywgsim.wgsim.core", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_4) < 0) __PYX_ERR(0, 38, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_4) < 0) __PYX_ERR(0, 39, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_6);
       __pyx_v_exc = __pyx_t_6;
 
-      /* "pywgsim/wgsim.pyx":39
+      /* "pywgsim/wgsim_lib.pyx":40
  * 
  *     except Exception as exc:
  *         error(str(exc))             # <<<<<<<<<<<<<<
  * 
  *     # Convert to
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_error); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 39, __pyx_L5_except_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_error); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 40, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_13 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_v_exc); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 39, __pyx_L5_except_error)
+      __pyx_t_13 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyString_Type)), __pyx_v_exc); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 40, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_13);
       __pyx_t_14 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
@@ -2230,7 +2230,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
       __pyx_t_9 = (__pyx_t_14) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_14, __pyx_t_13) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_13);
       __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 39, __pyx_L5_except_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 40, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -2242,7 +2242,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "pywgsim/wgsim.pyx":23
+    /* "pywgsim/wgsim_lib.pyx":24
  * 
  *     # Validating input parameters
  *     try:             # <<<<<<<<<<<<<<
@@ -2262,41 +2262,14 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
     __pyx_L8_try_end:;
   }
 
-  /* "pywgsim/wgsim.pyx":42
+  /* "pywgsim/wgsim_lib.pyx":43
  * 
  *     # Convert to
  *     r1 = r1.encode()             # <<<<<<<<<<<<<<
  *     r2 = r2.encode()
  *     ref = ref.encode()
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_r1, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_5 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
-    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_6);
-    if (likely(__pyx_t_5)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-      __Pyx_INCREF(__pyx_t_5);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_6, function);
-    }
-  }
-  __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
-  __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 42, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF_SET(__pyx_v_r1, __pyx_t_4);
-  __pyx_t_4 = 0;
-
-  /* "pywgsim/wgsim.pyx":43
- *     # Convert to
- *     r1 = r1.encode()
- *     r2 = r2.encode()             # <<<<<<<<<<<<<<
- *     ref = ref.encode()
- * 
- */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_r2, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_r1, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -2313,17 +2286,17 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
   if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __Pyx_DECREF_SET(__pyx_v_r2, __pyx_t_4);
+  __Pyx_DECREF_SET(__pyx_v_r1, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "pywgsim/wgsim.pyx":44
+  /* "pywgsim/wgsim_lib.pyx":44
+ *     # Convert to
  *     r1 = r1.encode()
- *     r2 = r2.encode()
- *     ref = ref.encode()             # <<<<<<<<<<<<<<
+ *     r2 = r2.encode()             # <<<<<<<<<<<<<<
+ *     ref = ref.encode()
  * 
- *     wgsim_wrap(r1, r2, ref, err_rate, mut_rate, indel_frac, indel_ext, max_n, is_hap, N, dist, stdev, size_l, size_r,
  */
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_ref, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 44, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_r2, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
@@ -2340,39 +2313,66 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
   if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __Pyx_DECREF_SET(__pyx_v_r2, __pyx_t_4);
+  __pyx_t_4 = 0;
+
+  /* "pywgsim/wgsim_lib.pyx":45
+ *     r1 = r1.encode()
+ *     r2 = r2.encode()
+ *     ref = ref.encode()             # <<<<<<<<<<<<<<
+ * 
+ *     wgsim_wrap(r1, r2, ref, err_rate, mut_rate, indel_frac, indel_ext, max_n, is_hap, N, dist, stdev, size_l, size_r,
+ */
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_ref, __pyx_n_s_encode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
+  __pyx_t_5 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
+    __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_6);
+    if (likely(__pyx_t_5)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
+      __Pyx_INCREF(__pyx_t_5);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_6, function);
+    }
+  }
+  __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF_SET(__pyx_v_ref, __pyx_t_4);
   __pyx_t_4 = 0;
 
-  /* "pywgsim/wgsim.pyx":46
+  /* "pywgsim/wgsim_lib.pyx":47
  *     ref = ref.encode()
  * 
  *     wgsim_wrap(r1, r2, ref, err_rate, mut_rate, indel_frac, indel_ext, max_n, is_hap, N, dist, stdev, size_l, size_r,             # <<<<<<<<<<<<<<
  *                is_fixed, seed)
  */
-  __pyx_t_15 = __Pyx_PyObject_AsString(__pyx_v_r1); if (unlikely((!__pyx_t_15) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_16 = __Pyx_PyObject_AsString(__pyx_v_r2); if (unlikely((!__pyx_t_16) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_17 = __Pyx_PyObject_AsString(__pyx_v_ref); if (unlikely((!__pyx_t_17) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_18 = __pyx_PyFloat_AsFloat(__pyx_v_err_rate); if (unlikely((__pyx_t_18 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_19 = __pyx_PyFloat_AsFloat(__pyx_v_mut_rate); if (unlikely((__pyx_t_19 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_20 = __pyx_PyFloat_AsFloat(__pyx_v_indel_frac); if (unlikely((__pyx_t_20 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_21 = __pyx_PyFloat_AsFloat(__pyx_v_indel_ext); if (unlikely((__pyx_t_21 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_22 = __pyx_PyFloat_AsFloat(__pyx_v_max_n); if (unlikely((__pyx_t_22 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_is_hap); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_23 = __Pyx_PyInt_As_long(__pyx_v_N); if (unlikely((__pyx_t_23 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_24 = __Pyx_PyInt_As_int(__pyx_v_dist); if (unlikely((__pyx_t_24 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_25 = __Pyx_PyInt_As_int(__pyx_v_stdev); if (unlikely((__pyx_t_25 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_26 = __Pyx_PyInt_As_int(__pyx_v_size_l); if (unlikely((__pyx_t_26 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_t_27 = __Pyx_PyInt_As_int(__pyx_v_size_r); if (unlikely((__pyx_t_27 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_AsString(__pyx_v_r1); if (unlikely((!__pyx_t_15) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_AsString(__pyx_v_r2); if (unlikely((!__pyx_t_16) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_17 = __Pyx_PyObject_AsString(__pyx_v_ref); if (unlikely((!__pyx_t_17) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_18 = __pyx_PyFloat_AsFloat(__pyx_v_err_rate); if (unlikely((__pyx_t_18 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_19 = __pyx_PyFloat_AsFloat(__pyx_v_mut_rate); if (unlikely((__pyx_t_19 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_20 = __pyx_PyFloat_AsFloat(__pyx_v_indel_frac); if (unlikely((__pyx_t_20 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_21 = __pyx_PyFloat_AsFloat(__pyx_v_indel_ext); if (unlikely((__pyx_t_21 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_22 = __pyx_PyFloat_AsFloat(__pyx_v_max_n); if (unlikely((__pyx_t_22 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyInt_As_int(__pyx_v_is_hap); if (unlikely((__pyx_t_11 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_23 = __Pyx_PyInt_As_long(__pyx_v_N); if (unlikely((__pyx_t_23 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_24 = __Pyx_PyInt_As_int(__pyx_v_dist); if (unlikely((__pyx_t_24 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_25 = __Pyx_PyInt_As_int(__pyx_v_stdev); if (unlikely((__pyx_t_25 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_26 = __Pyx_PyInt_As_int(__pyx_v_size_l); if (unlikely((__pyx_t_26 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_27 = __Pyx_PyInt_As_int(__pyx_v_size_r); if (unlikely((__pyx_t_27 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
 
-  /* "pywgsim/wgsim.pyx":47
+  /* "pywgsim/wgsim_lib.pyx":48
  * 
  *     wgsim_wrap(r1, r2, ref, err_rate, mut_rate, indel_frac, indel_ext, max_n, is_hap, N, dist, stdev, size_l, size_r,
  *                is_fixed, seed)             # <<<<<<<<<<<<<<
  */
-  __pyx_t_28 = __Pyx_PyInt_As_int(__pyx_v_is_fixed); if (unlikely((__pyx_t_28 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
-  __pyx_t_29 = __Pyx_PyInt_As_int(__pyx_v_seed); if (unlikely((__pyx_t_29 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_28 = __Pyx_PyInt_As_int(__pyx_v_is_fixed); if (unlikely((__pyx_t_28 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L1_error)
+  __pyx_t_29 = __Pyx_PyInt_As_int(__pyx_v_seed); if (unlikely((__pyx_t_29 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L1_error)
 
-  /* "pywgsim/wgsim.pyx":46
+  /* "pywgsim/wgsim_lib.pyx":47
  *     ref = ref.encode()
  * 
  *     wgsim_wrap(r1, r2, ref, err_rate, mut_rate, indel_frac, indel_ext, max_n, is_hap, N, dist, stdev, size_l, size_r,             # <<<<<<<<<<<<<<
@@ -2380,7 +2380,7 @@ static PyObject *__pyx_pf_7pywgsim_5wgsim_4core(CYTHON_UNUSED PyObject *__pyx_se
  */
   (void)(wgsim_wrap(__pyx_t_15, __pyx_t_16, __pyx_t_17, __pyx_t_18, __pyx_t_19, __pyx_t_20, __pyx_t_21, __pyx_t_22, __pyx_t_11, __pyx_t_23, __pyx_t_24, __pyx_t_25, __pyx_t_26, __pyx_t_27, __pyx_t_28, __pyx_t_29));
 
-  /* "pywgsim/wgsim.pyx":19
+  /* "pywgsim/wgsim_lib.pyx":20
  *     sys.exit(1)
  * 
  * def core(ref, r1="read1.fq", r2="read2.fq", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05,             # <<<<<<<<<<<<<<
@@ -2495,7 +2495,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_os, __pyx_k_os, sizeof(__pyx_k_os), 0, 0, 1, 1},
   {&__pyx_n_s_path, __pyx_k_path, sizeof(__pyx_k_path), 0, 0, 1, 1},
   {&__pyx_n_s_pywgsim_wgsim, __pyx_k_pywgsim_wgsim, sizeof(__pyx_k_pywgsim_wgsim), 0, 0, 1, 1},
-  {&__pyx_kp_s_pywgsim_wgsim_pyx, __pyx_k_pywgsim_wgsim_pyx, sizeof(__pyx_k_pywgsim_wgsim_pyx), 0, 0, 1, 0},
+  {&__pyx_kp_s_pywgsim_wgsim_lib_pyx, __pyx_k_pywgsim_wgsim_lib_pyx, sizeof(__pyx_k_pywgsim_wgsim_lib_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_r1, __pyx_k_r1, sizeof(__pyx_k_r1), 0, 0, 1, 1},
   {&__pyx_n_s_r2, __pyx_k_r2, sizeof(__pyx_k_r2), 0, 0, 1, 1},
   {&__pyx_kp_s_read1_fq, __pyx_k_read1_fq, sizeof(__pyx_k_read1_fq), 0, 0, 1, 0},
@@ -2515,7 +2515,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 29, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 30, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -2525,41 +2525,41 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "pywgsim/wgsim.pyx":8
+  /* "pywgsim/wgsim_lib.pyx":9
  *                    int is_fixed, int seed)
  * 
  * def fraction(value):             # <<<<<<<<<<<<<<
  *     value = float(value)
  *     if value > 1:
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_value); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_value); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pywgsim_wgsim_pyx, __pyx_n_s_fraction, 8, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pywgsim_wgsim_lib_pyx, __pyx_n_s_fraction, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 9, __pyx_L1_error)
 
-  /* "pywgsim/wgsim.pyx":14
+  /* "pywgsim/wgsim_lib.pyx":15
  *     return value
  * 
  * def error(msg):             # <<<<<<<<<<<<<<
  *     sys.stderr.write("*** %s\n" % msg)
  *     sys.stderr.write("*** exiting\n")
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_msg); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_msg); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pywgsim_wgsim_pyx, __pyx_n_s_error, 14, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pywgsim_wgsim_lib_pyx, __pyx_n_s_error, 15, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 15, __pyx_L1_error)
 
-  /* "pywgsim/wgsim.pyx":19
+  /* "pywgsim/wgsim_lib.pyx":20
  *     sys.exit(1)
  * 
  * def core(ref, r1="read1.fq", r2="read2.fq", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05,             # <<<<<<<<<<<<<<
  *          is_hap=0, N=100000, dist=500, stdev=50, size_l=100, size_r=100, is_fixed=0, seed=0):
  * 
  */
-  __pyx_tuple__5 = PyTuple_Pack(19, __pyx_n_s_ref, __pyx_n_s_r1, __pyx_n_s_r2, __pyx_n_s_err_rate, __pyx_n_s_mut_rate, __pyx_n_s_indel_frac, __pyx_n_s_indel_ext, __pyx_n_s_max_n, __pyx_n_s_is_hap, __pyx_n_s_N, __pyx_n_s_dist, __pyx_n_s_stdev, __pyx_n_s_size_l, __pyx_n_s_size_r, __pyx_n_s_is_fixed, __pyx_n_s_seed, __pyx_n_s_name_2, __pyx_n_s_fp, __pyx_n_s_exc); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(19, __pyx_n_s_ref, __pyx_n_s_r1, __pyx_n_s_r2, __pyx_n_s_err_rate, __pyx_n_s_mut_rate, __pyx_n_s_indel_frac, __pyx_n_s_indel_ext, __pyx_n_s_max_n, __pyx_n_s_is_hap, __pyx_n_s_N, __pyx_n_s_dist, __pyx_n_s_stdev, __pyx_n_s_size_l, __pyx_n_s_size_r, __pyx_n_s_is_fixed, __pyx_n_s_seed, __pyx_n_s_name_2, __pyx_n_s_fp, __pyx_n_s_exc); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(16, 0, 19, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pywgsim_wgsim_pyx, __pyx_n_s_core, 19, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(16, 0, 19, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pywgsim_wgsim_lib_pyx, __pyx_n_s_core, 20, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -2851,10 +2851,10 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "pywgsim/wgsim.pyx":1
+  /* "pywgsim/wgsim_lib.pyx":1
  * import os, sys             # <<<<<<<<<<<<<<
  * 
- * cdef extern from "wgsim_mod.h":
+ * 
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_os, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -2865,46 +2865,46 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_sys, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pywgsim/wgsim.pyx":8
+  /* "pywgsim/wgsim_lib.pyx":9
  *                    int is_fixed, int seed)
  * 
  * def fraction(value):             # <<<<<<<<<<<<<<
  *     value = float(value)
  *     if value > 1:
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7pywgsim_5wgsim_1fraction, NULL, __pyx_n_s_pywgsim_wgsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7pywgsim_5wgsim_1fraction, NULL, __pyx_n_s_pywgsim_wgsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fraction, __pyx_t_1) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_fraction, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pywgsim/wgsim.pyx":14
+  /* "pywgsim/wgsim_lib.pyx":15
  *     return value
  * 
  * def error(msg):             # <<<<<<<<<<<<<<
  *     sys.stderr.write("*** %s\n" % msg)
  *     sys.stderr.write("*** exiting\n")
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7pywgsim_5wgsim_3error, NULL, __pyx_n_s_pywgsim_wgsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7pywgsim_5wgsim_3error, NULL, __pyx_n_s_pywgsim_wgsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_error, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_error, __pyx_t_1) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pywgsim/wgsim.pyx":19
+  /* "pywgsim/wgsim_lib.pyx":20
  *     sys.exit(1)
  * 
  * def core(ref, r1="read1.fq", r2="read2.fq", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05,             # <<<<<<<<<<<<<<
  *          is_hap=0, N=100000, dist=500, stdev=50, size_l=100, size_r=100, is_fixed=0, seed=0):
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7pywgsim_5wgsim_5core, NULL, __pyx_n_s_pywgsim_wgsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7pywgsim_5wgsim_5core, NULL, __pyx_n_s_pywgsim_wgsim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_core, __pyx_t_1) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_core, __pyx_t_1) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pywgsim/wgsim.pyx":1
+  /* "pywgsim/wgsim_lib.pyx":1
  * import os, sys             # <<<<<<<<<<<<<<
  * 
- * cdef extern from "wgsim_mod.h":
+ * 
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);

@@ -480,7 +480,7 @@ int wgsim_wrap(const char *r1, const char *r2, const char *ref, float err_rate, 
 
     // Print GFF header and simulation paramteres
     printf("##gff-version 3\n");
-    printf("#\n# N=%ld err_rate=%0.8g mut_rate=%0.8g indel_frac=%0.8g indel_ext=%0.8g size=%d std=%d len1=%d len2=%d seed=%d\n#\n",\
+    printf("#\n# N=%ld err=%0.4g mut=%0.4g frac=%0.4g ext=%0.4g dist=%d stdev=%d L1=%d L2=%d seed=%d\n#\n",\
         N, err_rate, mut_rate, indel_frac, indel_extend, dist, std_dev, size_l, size_r, seed);
 
     // Call main function

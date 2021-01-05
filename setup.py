@@ -1,18 +1,35 @@
 from setuptools import setup, find_packages
 from setuptools.extension import Extension
-from Cython.Build import cythonize
+
+try:
+    from Cython.Build import cythonize
+
+    USE_CYTHON = True
+except ImportError as exc:
+    USE_CYTHON = False
+
+# Build the package differently when Cython is present.
+ext = 'pyx' if USE_CYTHON else 'c'
+
 import pywgsim
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-pywgsim_ext = Extension(
-    name="pywgsim.wgsim",
-    sources=[ "pywgsim/wgsim.pyx", "pywgsim/lib/wgsim_mod.c"],
-    depends=["pywgsim/lib/wgsim_mod.h", "pywgsim/lib/kseq.h"],
-    libraries=["z", "m"],
-    include_dirs=["pywgsim/lib"]
-)
+extensions = [
+    Extension(
+        name="pywgsim.wgsim",
+        sources=["pywgsim/wgsim_lib." + ext, "pywgsim/src/wgsim_mod.c"],
+        depends=["pywgsim/src/wgsim_mod.h", "pywgsim/src/kseq.h"],
+        libraries=["z", "m"],
+        include_dirs=["pywgsim/src"]
+    ),
+]
+
+if USE_CYTHON:
+    from Cython.Build import cythonize
+
+    extensions = cythonize(extensions)
 
 setup(
     name="pywgsim",
@@ -32,7 +49,6 @@ setup(
         'Programming Language :: Cython',
     ],
     install_requires=[
-        'cython',
         'plac',
     ],
 
@@ -42,10 +58,10 @@ setup(
         ],
     },
 
-    include_package_data = True,
+    include_package_data=True,
 
     python_requires='>=3.6',
 
-    ext_modules=cythonize([pywgsim_ext])
+    ext_modules=extensions,
 
 )

@@ -13,10 +13,8 @@ The package provides both a python wrapper and standalone compiled executables f
 ## Installation
 
     pip install pywgsim
-    
-Clone the repository and run `make` to get an executable compiled version of `pywgsim` in the `scripts` directory. 
 
-* PyPI page: https://pypi.org/project/pywgsim/
+PyPI page: https://pypi.org/project/pywgsim/
  
 ## Usage
 
@@ -52,17 +50,23 @@ prints:
 
 ## Changes compared to wgsim
 
-The original code for wgsim has been altered as follows:
+The original code for wgsim has been modified as follows:
 
-1. The output for the mutations introduced by `wgsim` are now generated in GFF format.
+1. The output describing the mutations introduced by `wgsim` are generated in GFF format.
 1. The separator character in the read name has been changed from `_` to `|`. 
 1. There is a new flag called `--fixed` that generates the same `N` number of reads for each chromosome.
+
+### Read naming
 
 The read naming now follows a more widely accepted convention (i.e. NCBI) and allows for contigs with underscores in them. In addition the visual inspection of the read names is easier: 
 
 `@NC_002945.4|1768156|1768694|0:0:0|4:0:0|4`
 
-In the default operation of wgsim the `N` reads are distributed such to create a uniform coverage across all chromosomes (longer chromosomes get a larger fraction of N). When the `--fixed` mode is enabled `N` reads will be generated for each chromosome. The `--fixed` mode was introduced to simplify the evaluation of classifiers. Since the same number of reads is generated from each input sequence that makes it much simpler the assess the quality of classifications. 
+### Fixed mode
+
+In the default operation of wgsim the `N` reads are distributed such to create a uniform coverage across all chromosomes (longer chromosomes get a larger fraction of N). 
+
+When the `--fixed` mode is enabled `N` reads will be generated for each chromosome. The `--fixed` mode was introduced to simplify the evaluation of classifiers. Since the same number of reads is generated from each input sequence it makes it much simpler to assess the quality of classifications. 
  
 ## Mutation output
 
@@ -120,11 +124,12 @@ Where:
    * `4` is the read pair number, unique, per contig.
 
 
-          
 ## API
 
 The C interface to `wgsim` is accessible as a single function call 
 
     from pywgsim import wgsim
 
-    wgsim.core(r1="r1.fq", r2="r2.fq", ref="genome.fa", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05, is_hap=0, N=100000,  dist=500, stdev=50, size_l=100, size_r=100, is_fixed=0, seed=0)
+    wgsim.core(r1="read1.fq", r2="read2.fq", ref="genome.fa", err_rate=0.02, mut_rate=0.001, indel_frac=0.15, indel_ext=0.25, max_n=0.05, is_hap=0, N=100000,  dist=500, stdev=50, size_l=100, size_r=100, is_fixed=0, seed=0)
+    
+The function creates the files `r1` and `r2`.
