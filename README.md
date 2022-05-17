@@ -12,9 +12,15 @@ The package provides both a python wrapper and standalone compiled executables f
 
 ## Installation
 
+### Using pip
+
     pip install pywgsim
 
 PyPI page: https://pypi.org/project/pywgsim/
+
+### Using conda 
+
+    conda install -c conda-forge -c bioconda pywgsim
  
 ## Usage
 
