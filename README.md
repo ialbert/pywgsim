@@ -100,6 +100,8 @@ Interpretation:
 
 ## Ambiguity codes
 
+The table shows base, alternate and complement of  the ambiguity code:
+
     A           A           T
     C           C           G
     G           G           C
